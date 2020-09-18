@@ -13,4 +13,4 @@ lint:
 freeze:
 	pip freeze --exclude-editable > requirements.txt
 
-.PHONY: install test check freeze
+.PHONY: install test lint freeze
