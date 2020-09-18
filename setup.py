@@ -1,10 +1,10 @@
-import os
+from pathlib import Path
 
 from setuptools import find_packages, setup
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-VERSION_FILE = os.path.join(BASE_DIR, "dictionarydb", "__init__.py")
-README_FILE = os.path.join(BASE_DIR, "README.rst")
+BASE_DIR = Path(__file__).resolve().parent
+VERSION_FILE = BASE_DIR / "dictionarydb" / "__init__.py"
+README_FILE = BASE_DIR / "README.rst"
 
 with open(VERSION_FILE) as version_file:
     version_dict = {}
