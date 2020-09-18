@@ -4,7 +4,10 @@ install:
 test:
 	py.test --cov dictionarydb --cov-report term-missing --no-cov-on-fail tests
 
-check:
+lint:
+	python -m flake8 --show-source setup.py dictionarydb/ tests/
+	python -m pydocstyle --source setup.py dictionarydb/ tests/
+	python -m black --check setup.py dictionarydb/ tests/
 	python setup.py check --strict --metadata --restructuredtext
 
 freeze:
