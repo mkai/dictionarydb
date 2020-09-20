@@ -4,6 +4,23 @@ from fastapi import FastAPI
 from dictionarydb.config import settings
 
 app = FastAPI()
+database = None
+
+
+@app.on_event("startup")
+async def on_startup():
+    global database
+
+    database = Database(settings.DATABASE_URL)
+    await database.connect()
+
+
+@app.on_event("shutdown")
+async def on_shutdown():
+    global database
+
+    if database:
+        await database.disconnect()
 
 
 LOOKUP_QUERY = """
@@ -52,9 +69,6 @@ select * from results_by_relevance
 """  # noqa
 @app.get("/lookup")
 async def lookup(source_language: str, target_language: str, query: str):
-    database = Database(settings.DATABASE_URL)
-    await database.connect()
-
     results = await database.fetch_all(
         query=LOOKUP_QUERY,
         values={
