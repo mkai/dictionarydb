@@ -36,6 +36,9 @@ setup(
         "more-itertools",
         "humanfriendly",
         "iso-639",
+        "fastapi",
+        "uvicorn",
+        "databases",
     ],
     extras_require={
         "postgresql": ["psycopg2"],
