@@ -1,3 +1,4 @@
+"""Main program."""
 import errno
 import logging
 import logging.config

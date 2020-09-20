@@ -1,3 +1,4 @@
+"""Database models and utilities."""
 import logging
 from contextlib import contextmanager
 from uuid import uuid4
@@ -14,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def configure_sqlite_engine(engine):
-    """Enable foreign keys, write-ahead logging and proper transactions for SQLite."""
+    """Turn on foreign keys, write-ahead logging and proper transactions for SQLite."""
 
     @event.listens_for(engine, "connect")
     def do_connect(connection, connection_record):
@@ -35,7 +36,7 @@ def configure_sqlite_engine(engine):
 
 
 def prepare_engine(database_url):
-    """Instantiate a new database engine."""
+    """Create a new database engine."""
     engine = create_engine(database_url)
 
     if engine.dialect.name == "sqlite":
@@ -45,7 +46,7 @@ def prepare_engine(database_url):
 
 
 def prepare_session(engine):
-    """Prepare a new database session."""
+    """Create a new database session using the given engine."""
     session_factory = sessionmaker(bind=engine)
     return scoped_session(session_factory)
 
@@ -66,7 +67,7 @@ def managed_session(engine):
 
 
 def setup_database(database_url):
-    """Initialize the database tables."""
+    """Initialize the database schema."""
     engine = prepare_engine(database_url)
     Model.metadata.create_all(engine)
 

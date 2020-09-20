@@ -1,3 +1,4 @@
+"""Code for importing dictionary entries into the database."""
 import logging
 
 from more_itertools import chunked

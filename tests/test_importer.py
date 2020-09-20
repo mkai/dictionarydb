@@ -41,7 +41,7 @@ def mock_managed_session(engine):
 
 
 TEST_ENTRIES = [
-    # Simple word
+    # Single word
     ("Wörterbuch", "dictionary"),
     # Word with synonyms
     ("Etage {f}; Stock {m}; Stockwerk {n}", "floor /fl./"),

@@ -8,7 +8,7 @@ def test_load_entries(test_file_contents):
     entries = load_entries(file)
 
     assert list(entries) == [
-        # Simple word
+        # Single word
         ("Wörterbuch", "dictionary"),
         # Word with synonyms
         ("Etage {f}; Stock {m}; Stockwerk {n}", "floor /fl./"),

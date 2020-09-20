@@ -8,7 +8,7 @@ def test_file_contents():
     # 1995 - 2020
     # License :: GPL Version 2 or later; GNU General Public License
     # URL :: http://dict.tu-chemnitz.de/
-    # Simple word
+    # Single word
     Wörterbuch :: dictionary
 
     # Word with synonyms
