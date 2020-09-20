@@ -51,13 +51,17 @@ def insert_entries(session, entries, source_language, target_language):
     return int(len(new_words) / 2)
 
 
+def get_words_in_languages(session, language_ids):
+    return session.query(Word).filter(Word.language_id.in_(language_ids))
+
+
 def delete_entries(session, source_language_code, target_language_code):
     # Fetch the source and target languages
     language_codes = [source_language_code, target_language_code]
     language_ids = session.query(Language.id).filter(Language.code.in_(language_codes))
 
     # Determine the number of words stored in those languages
-    num_words = session.query(Word).filter(Word.language_id.in_(language_ids)).count()
+    num_words = get_words_in_languages(session, language_ids).count()
 
     # Delete the languages (it will also delete all related words and translations)
     languages = session.query(Language).filter(Language.id.in_(language_ids))

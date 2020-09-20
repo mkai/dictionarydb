@@ -1,6 +1,6 @@
 import sys
 from contextlib import contextmanager
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import pytest
 
@@ -15,7 +15,7 @@ class MockQuery(object):
         return MockQuery()
 
     def count(self):
-        return 0
+        return -1
 
     def delete(self, **kwargs):
         pass
@@ -48,29 +48,41 @@ TEST_ENTRIES = [
     # Multiple words
     ("Chiasma {n} [biol.]", "chiasma; chiasm"),
     ("Chiasmata {pl}", "chiasmata"),
-    # Multiple words (missing translation) - the incomplete pair is skipped
-    ("aufs Geratewohl", "at haphazard; by haphazard"),
     # Invalid entry (model validation fails)
     ("stumm", ""),
 ]
 
 engine = object()
-entries = (entry for entry in TEST_ENTRIES)
 source_language_code = "deu"
 target_language_code = "eng"
 
 
 @patch("dictionarydb.importer.managed_session", new=mock_managed_session)
 def test_import_entries():
-    num_added, num_deleted = import_entries(
+    num_added, _ = import_entries(
         engine,
-        entries,
+        (entry for entry in TEST_ENTRIES),
         source_language_code,
         target_language_code,
     )
 
-    assert num_added == 5
-    assert num_deleted == 0
+    assert num_added == 4
+
+
+@patch("dictionarydb.importer.managed_session", new=mock_managed_session)
+@patch("dictionarydb.importer.get_words_in_languages")
+def test_import_entries_deletes_existing(get_words_in_languages):
+    num_existing_words = 100
+    get_words_in_languages.return_value = Mock(count=lambda: num_existing_words)
+
+    _, num_deleted = import_entries(
+        engine,
+        (entry for entry in TEST_ENTRIES),
+        source_language_code,
+        target_language_code,
+    )
+
+    assert num_deleted == num_existing_words / 2
 
 
 @patch("dictionarydb.importer.managed_session", new=mock_managed_session)
@@ -78,7 +90,7 @@ def test_import_entries_enforces_min_entries():
     with pytest.raises(EOFError, match=r"Not enough entries"):
         import_entries(
             engine,
-            entries,
+            (entry for entry in []),
             source_language_code,
             target_language_code,
             min_entries=sys.maxsize,
