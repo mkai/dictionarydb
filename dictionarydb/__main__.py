@@ -4,7 +4,17 @@ import logging
 import logging.config
 import sys
 
-from click import BadParameter, File, argument, confirm, group, option, version_option
+import uvicorn
+from click import (
+    BadParameter,
+    File,
+    IntRange,
+    argument,
+    confirm,
+    group,
+    option,
+    version_option,
+)
 from contexttimer import Timer
 from humanfriendly import format_timespan
 
@@ -139,6 +149,26 @@ def import_(
         f"Successfully completed dictionary import ({num_deleted} deleted, "
         f"{num_added} added, {format_timespan(timer.elapsed)} elapsed)."
     )
+
+
+@dictionarydb.command()
+@option(
+    "--host",
+    "-h",
+    default=settings.API_HOST,
+    help="Network address on which the server should listen.",
+)
+@option(
+    "--port",
+    "-p",
+    type=IntRange(0, 65535),
+    default=settings.API_PORT,
+    help="TCP port on which the server should listen.",
+)
+def api(host, port):
+    """Start the API server."""
+    log_level = settings.LOG_LEVEL.lower()
+    uvicorn.run("dictionarydb.api:app", host=host, port=port, log_level=log_level)
 
 
 if __name__ == "__main__":
