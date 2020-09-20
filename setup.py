@@ -41,7 +41,8 @@ setup(
         "databases",
     ],
     extras_require={
-        "postgresql": ["psycopg2"],
+        "sqlite": ["aiosqlite"],
+        "postgresql": ["psycopg2", "asyncpg"],
     },
     entry_points={
         "console_scripts": [
