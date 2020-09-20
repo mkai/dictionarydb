@@ -83,5 +83,27 @@ DATABASE_URL = config("DICTIONARYDB_DATABASE_URL", default=DEFAULT_DATABASE_URL)
 #:
 IMPORT_CHUNK_SIZE = config("DICTIONARYDB_IMPORT_CHUNK_SIZE", type=int, default=10_000)
 
+#: Network address on which the API server should listen.
+#:
+#: The default is to listen only on the local loopback interface (`localhost`).
+#:
+#: Example configuration:
+#:
+#: .. code-block:: shell
+#:
+#:   $ export DICTIONARYDB_API_HOST="0.0.0.0"
+#:
+API_HOST = config("DICTIONARYDB_API_HOST", default="localhost")
+
+#: TCP port number at which the API server should run.
+#:
+#: Example configuration:
+#:
+#: .. code-block:: shell
+#:
+#:   $ export DICTIONARYDB_PORT="8080"
+#:
+API_PORT = config("DICTIONARYDB_API_PORT", cast=int, default="8080")
+
 # Make the local variables in this module available as settings.<NAME>
 settings = sys.modules[__name__]
