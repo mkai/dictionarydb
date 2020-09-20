@@ -1,3 +1,42 @@
+"""
+Code for parsing a text file of dictionary entries.
+
+Right now, only one file format is supported: the file format of the
+`Ding dictionary lookup program`_.
+
+An entry in this file format looks as follows::
+
+  # Comment
+  # Single word (separated with two colons (`::`))
+  Wörterbuch :: dictionary
+  # Word with synonyms (separated with a semicolon (`;`))
+  Etage {f}; Stock {m}; Stockwerk {n} :: floor /fl./
+  # Multiple words (separated with a pipe symbol (`|`))
+  Chiasma {n} [biol.] | Chiasmata {pl} :: chiasma; chiasm | chiasmata
+
+The parser will yield a tuple of strings for every word pair found in the file. The
+first string in the tuple is the word in the source language (left side), the second
+string is the word in the target language (right side).
+
+For example, for the first first entry in the example above, it would yield the
+following tuple::
+
+  ("Wörterbuch", "dictionary")
+
+Since one entry can contain multiple (related) words, it is possible that more than one
+tuple is yielded for one entry (line) in the file.
+
+For example, for the last entry in the example above, the parser would yield the
+following two tuples::
+
+  ("Chiasma {n} [biol.]", "chiasma; chiasm")
+  ("Chiasmata {pl}", "chiasmata")
+
+**Note**: annotations like the number (`{n}`, `{pl}`) or category (`[biol.]`, etc.) of a
+word are not currently parsed – they are just included as part of the entry string.
+
+.. _`Ding dictionary lookup program`: https://www-user.tu-chemnitz.de/~fri/ding/
+"""
 import logging
 
 logger = logging.getLogger(__name__)
