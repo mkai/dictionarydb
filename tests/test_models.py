@@ -12,6 +12,7 @@ from dictionarydb.models import (
     Language,
     Word,
     Translation,
+    CREATE_PG_TRIGRAM_EXTENSION_QUERY,
 )
 
 
@@ -63,8 +64,22 @@ def test_managed_session_rolls_back_on_commit_failure(prepare_session, caplog):
     assert "Rolling back session due to error during commit" in caplog.text
 
 
+@patch("dictionarydb.models.prepare_engine")
 @patch("dictionarydb.models.Model")
-def test_setup_database(Model):
+def test_setup_database_postgres(Model, prepare_engine):
+    mock_engine = Mock()
+    mock_engine.dialect = Mock()
+    mock_engine.dialect.name = "postgresql"
+    prepare_engine.return_value = mock_engine
+
+    setup_database("postgresql://localhost:5432/dictionary")
+
+    Model.metadata.create_all.assert_called_once_with(mock_engine)
+    mock_engine.execute.assert_called_once_with(CREATE_PG_TRIGRAM_EXTENSION_QUERY)
+
+
+@patch("dictionarydb.models.Model")
+def test_setup_database_sqlite(Model):
     setup_database("sqlite:///")
     assert Model.metadata.create_all.called
 
