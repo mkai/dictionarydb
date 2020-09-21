@@ -31,13 +31,13 @@ with words_in_request_language as (
         select id from language
         where code = :source_language
     )
-), words_matching_query as (
+), words_matching_search as (
     select *
     from words_in_request_language
-    where text like :query || '%'
+    where text like :search_string || '%'
 ), words_with_translation_ids as (
     select words.*, translations.*
-    from words_matching_query as words
+    from words_matching_search as words
     inner join word_translates_to_word as translations
     on (words.id in (translations.word1_id, translations.word2_id))
 ), words_with_translations as (
@@ -62,7 +62,7 @@ with words_in_request_language as (
     from words_with_translations words
 ), results_by_relevance as (
     select results.*,
-           (similarity(results.word, :query)) as relevance
+           (similarity(results.word, :search_string)) as relevance
     from results_with_languages results
     order by relevance desc
 )
@@ -75,7 +75,7 @@ async def lookup(source_language: str, target_language: str, query: str):
         values={
             "source_language": source_language,
             "target_language": target_language,
-            "query": query,
+            "search_string": search_string.strip(),
         },
     )
 
