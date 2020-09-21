@@ -1,4 +1,4 @@
--e .[postgresql]
+-e .[sqlite,postgresql]
 pydocstyle
 flake8
 black

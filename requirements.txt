@@ -1,3 +1,4 @@
+aiosqlite==0.15.0
 appdirs==1.4.4
 asyncpg==0.21.0
 attrs==20.2.0
