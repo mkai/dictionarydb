@@ -6,6 +6,8 @@ from dictionarydb.config import settings
 app = FastAPI()
 database = None
 
+CREATE_PG_TRIGRAM_EXTENSION_QUERY = "create extension if not exists pg_trgm"
+
 
 @app.on_event("startup")
 async def on_startup():
@@ -13,6 +15,10 @@ async def on_startup():
 
     database = Database(settings.DATABASE_URL)
     await database.connect()
+
+    if database.url.scheme == "postgresql":
+        # Install the Trigram extension (used to sort results by relevance)
+        await database.execute(query=CREATE_PG_TRIGRAM_EXTENSION_QUERY)
 
 
 @app.on_event("shutdown")
