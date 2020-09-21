@@ -139,14 +139,12 @@ async def lookup(
     search_string: str = Query(..., min_length=2, max_length=100),
     max_results: int = DEFAULT_NUM_RESULTS,
 ):
-    results = await database.fetch_all(
-        query=get_lookup_query(database.url.scheme),
-        values={
-            "source_language": source_language,
-            "target_language": target_language,
-            "search_string": search_string.strip(),
-            "max_results": min(max_results, MAX_NUM_RESULTS),
-        },
-    )
-
+    query = get_lookup_query(database.url.scheme)
+    values = {
+        "source_language": source_language,
+        "target_language": target_language,
+        "search_string": search_string.strip(),
+        "max_results": min(max_results, MAX_NUM_RESULTS),
+    }
+    results = await database.fetch_all(query=query, values=values)
     return {"results": results}
