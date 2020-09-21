@@ -48,7 +48,8 @@ with words_in_request_language as (
     from words_with_translation_ids words
     inner join word as translated
     on (translated.id in (words.word1_id, words.word2_id)
-        and words.language_id != translated.language_id)
+        and words.language_id != translated.language_id
+        and translated.language_id = (select id from language where code = :target_language)))
 ), results_with_languages as (
     select words.word,
            (select code
@@ -73,6 +74,7 @@ async def lookup(source_language: str, target_language: str, query: str):
         query=LOOKUP_QUERY,
         values={
             "source_language": source_language,
+            "target_language": target_language,
             "query": query,
         },
     )
