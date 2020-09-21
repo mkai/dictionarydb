@@ -67,6 +67,7 @@ with words_in_request_language as (
     order by relevance desc
 )
 select * from results_by_relevance
+limit :max_results
 """  # noqa
 
 LOOKUP_QUERY_SQLITE = """
@@ -108,6 +109,7 @@ with words_in_request_language as (
     from words_with_translations words
 )
 select * from results_with_languages
+limit :max_results
 """  # noqa
 
 
@@ -120,11 +122,16 @@ def get_lookup_query(database_name):
         raise NotImplementedError("unsupported database")
 
 
+DEFAULT_NUM_RESULTS = 20
+MAX_NUM_RESULTS = 50
+
+
 @app.get("/lookup")
 async def lookup(
     source_language: str = Query(..., min_length=3, max_length=3),
     target_language: str = Query(..., min_length=3, max_length=3),
     search_string: str = Query(..., min_length=2, max_length=100),
+    max_results: int = DEFAULT_NUM_RESULTS,
 ):
     results = await database.fetch_all(
         query=get_lookup_query(database.url.scheme),
@@ -132,6 +139,7 @@ async def lookup(
             "source_language": source_language,
             "target_language": target_language,
             "search_string": search_string.strip(),
+            "max_results": min(max_results, MAX_NUM_RESULTS),
         },
     )
 
