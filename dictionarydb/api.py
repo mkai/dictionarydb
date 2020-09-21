@@ -1,5 +1,5 @@
 from databases import Database
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 
 from dictionarydb.config import settings
 
@@ -69,7 +69,11 @@ with words_in_request_language as (
 select * from results_by_relevance
 """  # noqa
 @app.get("/lookup")
-async def lookup(source_language: str, target_language: str, query: str):
+async def lookup(
+    source_language: str = Query(..., min_length=3, max_length=3),
+    target_language: str = Query(..., min_length=3, max_length=3),
+    search_string: str = Query(..., min_length=2, max_length=100),
+):
     results = await database.fetch_all(
         query=LOOKUP_QUERY,
         values={
