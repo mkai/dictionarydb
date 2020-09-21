@@ -1,4 +1,5 @@
 """Main program."""
+import os
 import errno
 import logging
 import logging.config
@@ -168,7 +169,10 @@ def import_(
 def api(host, port):
     """Start the API server."""
     log_level = settings.LOG_LEVEL.lower()
-    uvicorn.run("dictionarydb.api:app", host=host, port=port, log_level=log_level)
+    reload = os.environ.get("DICTIONARYDB_IS_DEV") == "1"
+    uvicorn.run(
+        "dictionarydb.api:app", host=host, port=port, log_level=log_level, reload=reload
+    )
 
 
 if __name__ == "__main__":
