@@ -66,10 +66,20 @@ def managed_session(engine):
         session.close()
 
 
+CREATE_PG_TRIGRAM_EXTENSION_QUERY = "create extension if not exists pg_trgm"
+
+
+def setup_postgres_engine(engine):
+    engine.execute(CREATE_PG_TRIGRAM_EXTENSION_QUERY)
+
+
 def setup_database(database_url):
     """Initialize the database schema."""
     engine = prepare_engine(database_url)
     Model.metadata.create_all(engine)
+
+    if engine.dialect.name == "postgresql":
+        setup_postgres_engine(engine)
 
 
 def new_object_id():
