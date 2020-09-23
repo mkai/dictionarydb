@@ -168,6 +168,7 @@ def import_(
 )
 def api(host, port):
     """Start the API server."""
+    logger.info(f"Starting API server on http://{host}:{port}…")
     uvicorn.run(
         "dictionarydb.api:app",
         host=host,
