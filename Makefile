@@ -13,4 +13,7 @@ lint:
 freeze:
 	pip freeze --exclude-editable > requirements.txt
 
-.PHONY: install test lint freeze
+serve:
+	DICTIONARYDB_IS_DEV=1 dictionarydb api
+
+.PHONY: install test lint freeze serve
