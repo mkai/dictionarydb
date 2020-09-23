@@ -126,8 +126,6 @@ def get_lookup_query(database_name=None):
         return LOOKUP_QUERY
 
 
-
-
 DEFAULT_NUM_RESULTS = 20
 MAX_NUM_RESULTS = 50
 
@@ -139,7 +137,7 @@ async def lookup(
     search_string: str = Query(..., min_length=2, max_length=100),
     max_results: int = DEFAULT_NUM_RESULTS,
 ):
-    query = get_lookup_query(database.url.scheme)
+    query = get_lookup_query(database_name=database.url.scheme)
     values = {
         "source_language": source_language,
         "target_language": target_language,
