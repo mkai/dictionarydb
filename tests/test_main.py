@@ -1,3 +1,4 @@
+import os
 import errno
 import shlex
 from unittest.mock import patch
@@ -5,7 +6,13 @@ from unittest.mock import patch
 import pytest
 
 from dictionarydb import __version__
-from dictionarydb.__main__ import dictionarydb, import_, init, validate_language_code
+from dictionarydb.__main__ import (
+    dictionarydb,
+    import_,
+    init,
+    validate_language_code,
+    api,
+)
 from dictionarydb.models import setup_database
 
 
@@ -119,3 +126,15 @@ def test_import_failure(_, __, test_database_url, test_input_file, cli_runner, c
 def test_validate_language_code():
     with pytest.raises(Exception, match="is not a valid ISO-639-3 code"):
         validate_language_code(None, None, "invalid")
+
+
+@patch("dictionarydb.__main__.uvicorn")
+@patch.dict(os.environ, {"DICTIONARYDB_IS_DEV": "1"})
+def test_api_command(uvicorn, cli_runner, caplog):
+    args_str = "--host=myhost --port=4000"
+    cli_runner.invoke(api, shlex.split(args_str))
+
+    uvicorn.run.assert_called_with(
+        "dictionarydb.api:app", host="myhost", port=4000, log_level="info", reload=True
+    )
+    assert "Starting API server on http://myhost:4000" in caplog.text
