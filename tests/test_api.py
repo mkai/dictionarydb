@@ -7,6 +7,13 @@ from fastapi.testclient import TestClient
 from dictionarydb.api import app
 
 
+def test_health():
+    with TestClient(app) as client:
+        response = client.get("/health")
+        assert response.status_code == 200
+        assert json.loads(response.text) == {"ok": True}
+
+
 class AsyncMockDatabase(object):
     def __init__(self, dialect, fetch_all_result=None):
         self.dialect = dialect

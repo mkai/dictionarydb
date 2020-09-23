@@ -23,6 +23,11 @@ async def on_shutdown():
         await database.disconnect()
 
 
+@app.get("/health")
+def healthcheck():
+    return {"ok": True}
+
+
 LOOKUP_QUERY = """
 with words_in_request_language as (
     select *
