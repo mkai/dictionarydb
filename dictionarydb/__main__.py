@@ -168,10 +168,12 @@ def import_(
 )
 def api(host, port):
     """Start the API server."""
-    log_level = settings.LOG_LEVEL.lower()
-    reload = os.environ.get("DICTIONARYDB_IS_DEV") == "1"
     uvicorn.run(
-        "dictionarydb.api:app", host=host, port=port, log_level=log_level, reload=reload
+        "dictionarydb.api:app",
+        host=host,
+        port=port,
+        log_level=settings.LOG_LEVEL.lower(),
+        reload=os.environ.get("DICTIONARYDB_IS_DEV") == "1",
     )
 
 
