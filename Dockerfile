@@ -6,6 +6,7 @@ COPY dictionarydb /dictionarydb
 RUN pip install --requirement /requirements.txt
 RUN pip install --editable .[postgresql]
 
+ENV DICTIONARYDB_DATABASE_URL=$DATABASE_URL
 ENV DICTIONARYDB_API_HOST=0.0.0.0
 ENV DICTIONARYDB_API_PORT=$PORT
 
