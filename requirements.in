@@ -1,4 +1,4 @@
--e .[sqlite,postgresql]
+--editable .[sqlite,postgresql]
 pydocstyle
 flake8
 black

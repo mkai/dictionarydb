@@ -11,11 +11,11 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Install dependencies
+      - name: Install Dependencies
         run: make install
-      - name: Run linters
+      - name: Lint
         run: make lint
-      - name: Run test suite
+      - name: Test
         run: make test
