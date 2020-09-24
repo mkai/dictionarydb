@@ -17,5 +17,5 @@ jobs:
           heroku_email: "${{ secrets.HEROKU_EMAIL }}"
           usedocker: true
           healthcheck: "https://dictionarydb.herokuapp.com/health"
-          delay: 10
+          delay: 30
           rollbackonhealthcheckfailed: true
