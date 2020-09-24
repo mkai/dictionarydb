@@ -12,4 +12,4 @@ ENV DICTIONARYDB_API_PORT=$PORT
 
 EXPOSE $DICTIONARYDB_API_PORT
 
-CMD ["sh", "-c", "dictionarydb init --no-confirm && dictionarydb api"]
+CMD ["sh", "-c", "echo $DATABASE_URL; echo $PORT; echo $DICTIONARYDB_DATABASE_URL; echo $DICTIONARYDB_API_PORT; dictionarydb init --no-confirm && dictionarydb api"]
