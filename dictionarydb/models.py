@@ -78,7 +78,7 @@ def setup_database(database_url):
     engine = prepare_engine(database_url)
     Model.metadata.create_all(engine)
 
-    if engine.dialect.name == "postgresql":
+    if engine.dialect.name.startswith("postgres"):
         setup_postgres_engine(engine)
 
 

@@ -118,8 +118,8 @@ limit :max_results
 """  # noqa
 
 
-def get_lookup_query(database_name=None):
-    if database_name == "postgresql":
+def get_lookup_query(database_name=""):
+    if database_name.startswith("postgres"):
         return LOOKUP_QUERY_POSTGRESQL
     else:
         return LOOKUP_QUERY
