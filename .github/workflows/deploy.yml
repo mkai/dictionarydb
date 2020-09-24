@@ -17,5 +17,3 @@ jobs:
           usedocker: true
           healthcheck: "https://dictionarydb.herokuapp.com/health"
           rollbackonhealthcheckfailed: true
-        env:
-          HD_DICTIONARYDB_DATABASE_URL: ${{ secrets.HEROKU_DATABASE_URL }}
