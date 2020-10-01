@@ -1,10 +1,11 @@
 FROM python:3.8.5
 
-COPY setup.py requirements.txt README.rst /
+COPY pyproject.toml poetry.lock README.rst /
 COPY dictionarydb /dictionarydb
 
-RUN pip install --requirement /requirements.txt
-RUN pip install --editable .[postgresql]
+RUN pip install poetry
+RUN poetry config virtualenvs.create false && \
+    poetry install --extras="postgresql" --no-dev --no-interaction --no-ansi
 
 ENV DICTIONARYDB_API_HOST=0.0.0.0
 
