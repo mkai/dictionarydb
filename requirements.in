@@ -1,9 +1,0 @@
---editable .[sqlite,postgresql]
-pydocstyle
-flake8
-black
-docutils
-pytest
-pytest-cov
-pytest-click
-requests
