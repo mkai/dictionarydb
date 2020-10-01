@@ -7,6 +7,6 @@ The data file of the freely licensed `Ding dictionary lookup program`_ can be us
 
 .. _`Ding dictionary lookup program`: https://www-user.tu-chemnitz.de/~fri/ding/
 
-.. |Coverage| image:: https://codecov.io/gh/mkai/dictionarydb/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/mkai/dictionarydb
+.. image:: https://codecov.io/gh/mkai/dictionarydb/branch/main/graph/badge.svg
+  :target: https://codecov.io/gh/mkai/dictionarydb
 
