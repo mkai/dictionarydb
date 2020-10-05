@@ -135,6 +135,11 @@ def test_api_command(uvicorn, cli_runner, caplog):
     cli_runner.invoke(api, shlex.split(args_str))
 
     uvicorn.run.assert_called_with(
-        "dictionarydb.api:app", host="myhost", port=4000, log_level="info", reload=True
+        "dictionarydb.api:app",
+        host="myhost",
+        port=4000,
+        log_level="info",
+        forwarded_allow_ips="127.0.0.1",
+        reload=True,
     )
     assert "Starting API server on http://myhost:4000" in caplog.text
