@@ -49,3 +49,5 @@ jobs:
           healthcheck: "https://dictionarydb.herokuapp.com/health"
           delay: 30
           rollbackonhealthcheckfailed: true
+        env:
+          HD_DICTIONARYDB_API_TRUST_PROXY_IPS: "*"
