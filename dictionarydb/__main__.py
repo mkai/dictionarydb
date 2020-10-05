@@ -174,6 +174,7 @@ def api(host, port):
         host=host,
         port=port,
         log_level=settings.LOG_LEVEL.lower(),
+        forwarded_allow_ips=settings.API_TRUST_PROXY_IPS,
         reload=os.environ.get("DICTIONARYDB_IS_DEV") == "1",
     )
 

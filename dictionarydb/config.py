@@ -105,5 +105,26 @@ API_HOST = config("DICTIONARYDB_API_HOST", default="localhost")
 #:
 API_PORT = config("DICTIONARYDB_API_PORT", cast=int, default="8080")
 
+#: Proxy IP addresses to trust when determining the client's IP, port and protocol.
+#:
+#: If a request from a trusted reverse proxy is received, then the "X-Forwarded-Host",
+#: "X-Forwarded-Port" and "X-Forwarded-Proto" HTTP headers will be taken into account
+#: when gathering the client request information.
+#:
+#: Since a misconfiguration of this setting can cause security issues, only 127.0.0.1
+#: is trusted by default.
+#:
+#: In trusted environments, you can use the wildcard "*" to trust all proxy IP
+#: addresses.
+#:
+#: Example configurations:
+#:
+#: .. code-block:: shell
+#:
+#:   $ export DICTIONARYDB_API_TRUST_PROXY_IPS="10.1.1.1,10.1.1.2"
+#:   $ export DICTIONARYDB_API_TRUST_PROXY_IPS="*"
+#:
+API_TRUST_PROXY_IPS = config("DICTIONARYDB_API_TRUST_PROXY_IPS", default="127.0.0.1")
+
 # Make the local variables in this module available as settings.<NAME>
 settings = sys.modules[__name__]
