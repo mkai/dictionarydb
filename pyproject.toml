@@ -6,7 +6,7 @@ readme = 'README.md'
 homepage = "https://github.com/mkai/dictionarydb"
 repository = "https://github.com/mkai/dictionarydb"
 authors = ["Markus Kaiserswerth <github@sensun.org>"]
-keywords = ["education", "language", "translations", "dictionary", "database", "import"]
+keywords = ["education", "language", "translations", "dictionary", "database", "importer"]
 classifiers = ["Topic :: Education", "Intended Audience :: Education"]
 
 [tool.poetry.dependencies]
