@@ -1,4 +1,4 @@
-FROM python:3.8.5
+FROM python:3.9.0
 
 COPY pyproject.toml poetry.lock README.rst /
 COPY dictionarydb /dictionarydb

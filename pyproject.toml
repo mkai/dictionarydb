@@ -10,7 +10,7 @@ keywords = ["education", "language", "translations", "dictionary", "database", "
 classifiers = ["Topic :: Education", "Intended Audience :: Education"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 prettyconf = "^2.1.0"
 coloredlogs = "^14.0"
 click = "^7.1.2"
