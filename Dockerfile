@@ -1,6 +1,6 @@
 FROM python:3.9.0
 
-COPY pyproject.toml poetry.lock README.rst /
+COPY pyproject.toml poetry.lock README.md /
 COPY dictionarydb /dictionarydb
 
 RUN pip install poetry

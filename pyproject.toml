@@ -2,7 +2,7 @@
 name = "dictionarydb"
 version = "0.1.0"
 description = "Command-line tool to set up a translation dictionary database."
-readme = 'README.rst'
+readme = 'README.md'
 homepage = "https://github.com/mkai/dictionarydb"
 repository = "https://github.com/mkai/dictionarydb"
 authors = ["Markus Kaiserswerth <github@sensun.org>"]
