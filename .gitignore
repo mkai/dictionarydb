@@ -1,4 +1,5 @@
 .env
+.envrc
 .coverage
 /data/*
 !/data/.gitkeep
