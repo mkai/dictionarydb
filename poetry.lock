@@ -1,13 +1,13 @@
 [[package]]
 name = "aiosqlite"
-version = "0.15.0"
+version = "0.16.0"
 description = "asyncio bridge to the standard sqlite3 module"
 category = "main"
 optional = true
 python-versions = ">=3.6"
 
 [package.dependencies]
-typing_extensions = "*"
+typing_extensions = ">=3.7.2"
 
 [[package]]
 name = "appdirs"
@@ -590,12 +590,12 @@ sqlite = ["aiosqlite"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "30a6ccd6ab2d1462c09609591787964caf4793de7b3cc4cf8a13dc585b6350bc"
+content-hash = "69a3ac350bf7b2425cd2370774e377c490e186e5c3ddec9811f56c4cdde8f82c"
 
 [metadata.files]
 aiosqlite = [
-    {file = "aiosqlite-0.15.0-py3-none-any.whl", hash = "sha256:19b984b6702aed9f1c85c023f37296954547fc4030dae8e9d027b2a930bed78b"},
-    {file = "aiosqlite-0.15.0.tar.gz", hash = "sha256:a2884793f4dc8f2798d90e1dfecb2b56a6d479cf039f7ec52356a7fd5f3bdc57"},
+    {file = "aiosqlite-0.16.0-py3-none-any.whl", hash = "sha256:0e5b8465b0b6aa7f2b0a1fa7f3af53216fcea1947f524b658bd4b4696e72f1b7"},
+    {file = "aiosqlite-0.16.0.tar.gz", hash = "sha256:d014ef07fbc523b2d195fc17cf35982285e3220eb73c1068d5df37b569950ea8"},
 ]
 appdirs = [
     {file = "appdirs-1.4.4-py2.py3-none-any.whl", hash = "sha256:a841dacd6b99318a741b166adb07e19ee71a274450e68237b4650ca1055ab128"},
