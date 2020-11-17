@@ -141,7 +141,7 @@ toml = ["toml"]
 
 [[package]]
 name = "databases"
-version = "0.4.0"
+version = "0.4.1"
 description = "Async database support for Python."
 category = "main"
 optional = false
@@ -151,8 +151,8 @@ python-versions = ">=3.6"
 sqlalchemy = "*"
 
 [package.extras]
-mysql = ["aiomysql", "pymysql"]
-postgresql = ["asyncpg", "psycopg2"]
+mysql = ["aiomysql"]
+postgresql = ["asyncpg"]
 postgresql_aiopg = ["aiopg"]
 sqlite = ["aiosqlite"]
 
@@ -590,7 +590,7 @@ sqlite = ["aiosqlite"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "1adbc814f8eb439455dad78591913bbf16b176058c12046269fdf0ad38e5ae9e"
+content-hash = "289479e3a06cc884def8ef448d6999647f1fbd42c05467d605cf04e46ee4ae85"
 
 [metadata.files]
 aiosqlite = [
@@ -699,8 +699,8 @@ coverage = [
     {file = "coverage-5.3.tar.gz", hash = "sha256:280baa8ec489c4f542f8940f9c4c2181f0306a8ee1a54eceba071a449fb870a0"},
 ]
 databases = [
-    {file = "databases-0.4.0-py3-none-any.whl", hash = "sha256:f8a2f48f17f39803d7b74e810be0ad4add030f392f178fc1ded374d80c9645a9"},
-    {file = "databases-0.4.0.tar.gz", hash = "sha256:8aac48977c3827a7c9bc4d94a0b138ac7fa60679facd3d4b15e4533f463e48fa"},
+    {file = "databases-0.4.1-py3-none-any.whl", hash = "sha256:853c7fa9a0d9b8af8d58cfa15aae00ec0a4fa73b31df4331192308e00c5b6345"},
+    {file = "databases-0.4.1.tar.gz", hash = "sha256:799febb8fc0ad1e9ac47b5510b91e971d35be205aa99b9a00b3811b4cb5e5254"},
 ]
 docutils = [
     {file = "docutils-0.16-py2.py3-none-any.whl", hash = "sha256:0c5b78adfbf7762415433f5515cd5c9e762339e23369dbe8000d84a4bf4ab3af"},
