@@ -206,7 +206,7 @@ python-versions = "*"
 
 [[package]]
 name = "humanfriendly"
-version = "9.0"
+version = "9.1"
 description = "Human friendly output for text interfaces using Python"
 category = "main"
 optional = false
@@ -590,7 +590,7 @@ sqlite = ["aiosqlite"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "2e4561a0bcde11ef7e3ca3226b92f5471a33331d73287395f6b193ef215c6f26"
+content-hash = "50ee00cc1b59bade2efda0e4d7ae15fa1d4e578d8668b7352b66dc7b6002b529"
 
 [metadata.files]
 aiosqlite = [
@@ -719,8 +719,8 @@ h11 = [
     {file = "h11-0.11.0.tar.gz", hash = "sha256:3c6c61d69c6f13d41f1b80ab0322f1872702a3ba26e12aa864c928f6a43fbaab"},
 ]
 humanfriendly = [
-    {file = "humanfriendly-9.0-py2.py3-none-any.whl", hash = "sha256:3c9ab8d28e88e6cc998e41963357736dafd555ee5bb666b50e42f6ce28dd3e3d"},
-    {file = "humanfriendly-9.0.tar.gz", hash = "sha256:175ffa628aa76da2c17369a5da5856084562cc66dfe7f82ae93ca3ef175277a6"},
+    {file = "humanfriendly-9.1-py2.py3-none-any.whl", hash = "sha256:d5c731705114b9ad673754f3317d9fa4c23212f36b29bdc4272a892eafc9bc72"},
+    {file = "humanfriendly-9.1.tar.gz", hash = "sha256:066562956639ab21ff2676d1fda0b5987e985c534fc76700a19bd54bcb81121d"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
