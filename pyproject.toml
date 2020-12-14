@@ -20,7 +20,7 @@ more-itertools = "^8.6.0"
 humanfriendly = "^9.1"
 iso-639 = "^0.4.5"
 fastapi = "^0.62.0"
-uvicorn = "^0.13.0"
+uvicorn = "^0.13.1"
 databases = "^0.4.1"
 requests = "^2.25.0"
 importlib-metadata = { version = "^3.1", python = "<3.8" }
