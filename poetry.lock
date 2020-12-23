@@ -557,7 +557,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
 name = "uvicorn"
-version = "0.13.1"
+version = "0.13.2"
 description = "The lightning-fast ASGI server."
 category = "main"
 optional = false
@@ -590,7 +590,7 @@ sqlite = ["aiosqlite"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "49c66fd4ec0df712044b9c24738b1485633e94f887638e77671f3267fc5076e5"
+content-hash = "98abad5c0f5b48abd570b5348702203ee6fedc24f8bea177d465bc187e036515"
 
 [metadata.files]
 aiosqlite = [
@@ -968,8 +968,8 @@ urllib3 = [
     {file = "urllib3-1.25.10.tar.gz", hash = "sha256:91056c15fa70756691db97756772bb1eb9678fa585d9184f24534b100dc60f4a"},
 ]
 uvicorn = [
-    {file = "uvicorn-0.13.1-py3-none-any.whl", hash = "sha256:6fcce74c00b77d4f4b3ed7ba1b2a370d27133bfdb46f835b7a76dfe0a8c110ae"},
-    {file = "uvicorn-0.13.1.tar.gz", hash = "sha256:2a7b17f4d9848d6557ccc2274a5f7c97f1daf037d130a0c6918f67cd9bc8cdf5"},
+    {file = "uvicorn-0.13.2-py3-none-any.whl", hash = "sha256:6707fa7f4dbd86fd6982a2d4ecdaad2704e4514d23a1e4278104311288b04691"},
+    {file = "uvicorn-0.13.2.tar.gz", hash = "sha256:d19ca083bebd212843e01f689900e5c637a292c63bb336c7f0735a99300a5f38"},
 ]
 zipp = [
     {file = "zipp-3.3.0-py3-none-any.whl", hash = "sha256:eed8ec0b8d1416b2ca33516a37a08892442f3954dee131e92cfd92d8fe3e7066"},
