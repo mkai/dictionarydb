@@ -315,7 +315,7 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "prettyconf"
-version = "2.1.0"
+version = "2.2.1"
 description = "Separation of settings from code."
 category = "main"
 optional = false
@@ -590,7 +590,7 @@ sqlite = ["aiosqlite"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "235d5f84ad507748a45b0f0ffed4023a7af061d4abd928d67744670bea261e8b"
+content-hash = "70e7304f184260552b9a3fcf16b356773445fd96e4ed15c79b514486c3cd5b37"
 
 [metadata.files]
 aiosqlite = [
@@ -762,7 +762,7 @@ pluggy = [
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 prettyconf = [
-    {file = "prettyconf-2.1.0.tar.gz", hash = "sha256:358af2f0d722999eaa4b3e0eb790fd10fad33bcb697d9bcacd53b58ff7fb342e"},
+    {file = "prettyconf-2.2.1.tar.gz", hash = "sha256:2478d16bc2596c9863e93dd182ca70b71f636f0e169ab23288906c53147cfdbc"},
 ]
 psycopg2 = [
     {file = "psycopg2-2.8.6-cp27-cp27m-win32.whl", hash = "sha256:068115e13c70dc5982dfc00c5d70437fe37c014c808acce119b5448361c03725"},
