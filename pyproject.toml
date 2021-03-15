@@ -21,7 +21,7 @@ humanfriendly = "^9.1"
 iso-639 = "^0.4.5"
 fastapi = "^0.63.0"
 uvicorn = "^0.13.4"
-databases = "^0.4.1"
+databases = "^0.4.2"
 requests = "^2.25.1"
 importlib-metadata = { version = "^3.7", python = "<3.8" }
 
